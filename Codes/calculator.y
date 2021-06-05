@@ -19,10 +19,10 @@
 %token <intval>NUMBER
 %type <fval>exp
 %left '+' ,'-'
-%left '*' ,'/','%'
+%left '*' ,'/'
 %left '^' ,' '
-%left '|'
-%left '&'
+%left '&&'
+%left '||'
 
 %%
 
@@ -32,14 +32,13 @@ stmt: NAME'='exp { printf("=%f\t\n",$3);}
 exp : exp'+'exp { $$ = $1 + $3;}
     | exp'-'exp { $$ = $1 - $3;}
     | exp'*'exp { $$ = $1 * $3;}
-    | exp'%'exp { $$ = $1 % $3;}
-    | exp'|'exp { $$ = $1 | $3;}
-    | exp'&'exp { $$ = $1 & $3;}
     | SIN' 'exp { $$ = sin($3*3.14/180);}
     | COS' 'exp { $$ = cos($3*3.14/180);}
     | TAN' 'exp { $$ =tan($3*(22/7)/180);}
     | LOG' 'exp {$$=log($3)/log(10);}
     | nLOG' 'exp {$$=log($3);}
+    | exp'&&'exp { $$ = $1 && $3;}
+    | exp'||'exp { $$ = $1 || $3;}
 
     | exp'/'exp {
                 if($3==0)
@@ -64,5 +63,3 @@ main()
     yyparse();
     getch();
 }
-
-
