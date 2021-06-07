@@ -2,7 +2,7 @@ package ssc_lab;
 import java.util.*;
 import java.io.*;
 
-public class M_pass2 {
+public class Macro_pass2 {
 	static List<String> MDT;
 	static List<String> outFile;
 	static Map<String, String> MNT;
