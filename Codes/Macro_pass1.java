@@ -12,7 +12,7 @@ import java.util.*;
 import java.io.*;
 import java.io.BufferedReader;
 
-public class lab3_macro {
+public class Macro_pass1 {
 	static List<String> MDT;
 	static Map<String, String> MNT; 
 	static Map<String, String> ALA;
